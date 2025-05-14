@@ -1,0 +1,26 @@
+pantalla-kuna/
+├── appLocal
+│   ├── dist
+│   │   ├── assets
+│   │   │   ├── index-D8b4DHJx.css
+│   │   │   ├── index-DK-xQhXp.js
+│   │   │   └── react-CHdo91hT.svg
+│   │   ├── index.html
+│   │   └── vite.svg
+│   └── instrucciones.txt
+├── public
+├── src
+│   ├── assets
+│   │   └── react.svg
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .gitignore
+├── README.md
+├── eslint.config.js
+├── genera-estructura.js
+├── index.html
+├── package-lock.json
+├── package.json
+└── vite.config.js

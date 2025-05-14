@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Caecilia LT Std';
+    src: url('../fonts/CaeciliaLTStd-Roman.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Caecilia LT Std';
+    src: url('../fonts/CaeciliaLTStd-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Caecilia LT Std';
+    src: url('../fonts/CaeciliaLTStd-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'Caecilia LT Std';
+    src: url('../fonts/CaeciliaLTStd-BoldItalic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+  }

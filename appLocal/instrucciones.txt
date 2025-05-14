@@ -1,0 +1,8 @@
+01. ejecutar el archivo ______
+02. si ejecuto el paso 1 debe haber un archivo en el escritorio llamado run-app.bat o solo run-app 
+03. apague y prenda el cpu, la app deberia ejecutarse automaticamente en 10 segundos despues de arrancar el equipo 
+04. si no se ejecuta haga doble click en en el archivo run-app que esta en el escritorio
+05. la app deberia ejecutarse 
+
+
+si no funciona porfavor comuniquese con el equipo de soprote.
