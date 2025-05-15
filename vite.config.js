@@ -9,3 +9,4 @@ export default defineConfig({
     emptyOutDir: true, // Limpiar la carpeta antes de cada build
   },
 })
+

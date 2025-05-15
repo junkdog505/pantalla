@@ -1,0 +1,75 @@
+.layoutContainer {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
+}
+
+/*************************************************
+ * Wrapper para el ButtonBack
+ *************************************************/
+.buttonWrapper {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 10;
+}
+
+/*************************************************
+ * Estilo minimal del botón
+ * Solo ícono con fondo transparente
+ *************************************************/
+.buttonMinimal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 12px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.buttonMinimal:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+/*************************************************
+ * Contenedor del contenido de video
+ *************************************************/
+.videoContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*************************************************
+ * Responsive para dispositivos móviles
+ *************************************************/
+@media (max-width: 768px) {
+  .buttonWrapper {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .buttonMinimal {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}

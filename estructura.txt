@@ -1,24 +1,64 @@
 pantalla-kuna/
 ├── appLocal
-│   ├── dist
-│   │   ├── assets
-│   │   │   ├── index-D8b4DHJx.css
-│   │   │   ├── index-DK-xQhXp.js
-│   │   │   └── react-CHdo91hT.svg
-│   │   ├── index.html
-│   │   └── vite.svg
 │   └── instrucciones.txt
 ├── public
+│   └── videos
 ├── src
 │   ├── assets
 │   │   └── react.svg
-│   ├── App.css
-│   ├── App.jsx
+│   ├── fonts
+│   │   ├── CaeciliaLTStd-Bold.otf
+│   │   ├── CaeciliaLTStd-BoldItalic.otf
+│   │   ├── CaeciliaLTStd-Italic.otf
+│   │   └── CaeciliaLTStd-Roman.otf
+│   ├── lang
+│   │   ├── categoriasKuna.js
+│   │   └── traducciones.js
+│   ├── layouts
+│   │   ├── Styles
+│   │   │   ├── LayoutBasico.module.css
+│   │   │   └── LayoutVideo.module.css
+│   │   ├── LayoutBasico.jsx
+│   │   └── LayoutVideo.jsx
+│   ├── pages
+│   │   ├── CategoriaKuna
+│   │   │   ├── Components
+│   │   │   ├── Styles
+│   │   │   │   └── CategoriaKuna.module.css
+│   │   │   └── CategoriaKuna.jsx
+│   │   ├── Certificaciones
+│   │   │   ├── Components
+│   │   │   ├── Styles
+│   │   │   │   └── Certificaciones.module.css
+│   │   │   └── Certificaciones.jsx
+│   │   ├── Colecciones
+│   │   │   ├── Components
+│   │   │   ├── Styles
+│   │   │   │   └── Colecciones.module.css
+│   │   │   └── Colecciones.jsx
+│   │   ├── Home
+│   │   │   ├── Components
+│   │   │   ├── Styles
+│   │   │   │   └── Home.module.css
+│   │   │   └── Home.jsx
+│   │   ├── Kuna
+│   │   │   ├── Components
+│   │   │   ├── Styles
+│   │   │   │   └── Kuna.module.css
+│   │   │   └── Kuna.jsx
+│   │   └── Pacomarca
+│   │       ├── Components
+│   │       ├── Styles
+│   │       │   └── Pacomarca.module.css
+│   │       └── Pacomarca.jsx
+│   ├── styles
+│   │   └── fonts.css
 │   ├── index.css
 │   └── main.jsx
 ├── .gitignore
 ├── README.md
 ├── eslint.config.js
+├── estructura.txt
 ├── genera-estructura.js
 ├── index.html
 ├── package-lock.json
