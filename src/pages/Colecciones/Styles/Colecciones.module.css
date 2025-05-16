@@ -1,0 +1,24 @@
+.coleccionesPage {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .coleccionesContent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+  }
+  
+  .coleccionesTitle {
+    font-family: 'Caecilia LT Std', sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+  }

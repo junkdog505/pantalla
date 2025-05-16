@@ -10,7 +10,7 @@ export const categoriasKuna = [
     // Ruta de la página específica
     ruta: '/kuna',
     // Configuración de video (solo este tiene video)
-    video_ruta: '/public/videos/kuna.mp4'
+    video_ruta: '/videos/kuna.mp4'
   },
   {
     id: 2,

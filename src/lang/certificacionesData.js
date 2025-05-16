@@ -17,10 +17,10 @@ export const datosCertificaciones = [
       ruta: '/videos/certificacion_1.mp4',
     },
     imgDestacadaVideo:{
-      ruta: '/public/ras_img_destacada.png'
+      ruta: '/ras_img_destacada.png'
     },
     logo: {
-      ruta: '/public/kuna_logo_dark.png'
+      ruta: '/kuna_logo_dark.png'
     }
   },
   {
@@ -41,10 +41,10 @@ export const datosCertificaciones = [
       ruta: '/videos/certificacion_2.mp4',
     },
     imgDestacadaVideo:{
-      ruta: '/public/certificaciones_img_destacada.png'
+      ruta: '/certificaciones_img_destacada.png'
     },
     logo: {
-      ruta: '/public/kuna_logo_dark.png'
+      ruta: '/kuna_logo_dark.png'
     }
   }
 ];

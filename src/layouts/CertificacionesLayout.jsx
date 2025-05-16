@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BsFillPlayFill } from 'react-icons/bs'; // Importa el ícono aquí
 import ButtonBack from '../components/ButtonBack/ButtonBack';
 import styles from './Styles/CertificacionesLayout.module.css';
 
@@ -17,7 +17,11 @@ function CertificacionesLayout({
   titulo_descripcion = null,
   descripcion = '',
   idioma = 'es',
-  logo = '/public/kuna_logo.png'
+  logo = '/public/kuna_logo.png',
+  // Nuevos props para manejar la imagen y el comportamiento de clic
+  imagenDestacada = null,
+  onImageClick = null,
+  showPlayButton = true  // Para controlar si se muestra el botón de play
 }) {
   const navigate = useNavigate();
 
@@ -45,6 +49,35 @@ function CertificacionesLayout({
           </span>
         ))}
       </h2>
+    );
+  };
+
+  // Función para renderizar la imagen destacada con botón de play
+  const renderizarImagenDestacada = () => {
+    if (!imagenDestacada) {
+      // Si no hay imagen destacada, renderiza el contenido normal
+      return children;
+    }
+
+    return (
+      <div 
+        className={styles.imgDestacadaContainer} 
+        onClick={onImageClick || (() => {})}
+      >
+        <img
+          src={imagenDestacada.ruta || imagenDestacada}
+          alt={titulo}
+          className={styles.imgDestacada}
+        />
+        {/* Botón de play central - solo si showPlayButton es true */}
+        {showPlayButton && (
+          <div className={styles.playButtonWrapper}>
+            <div className={styles.playButton}>
+              <BsFillPlayFill size={38} />
+            </div>
+          </div>
+        )}
+      </div>
     );
   };
 
@@ -86,7 +119,8 @@ function CertificacionesLayout({
         <div className={styles.contenidoPrincipal}>
           {/* Área de video/imagen */}
           <div className={styles.seccionVideo}>
-            {children}
+            {/* Renderizamos la imagen destacada o el contenido normal */}
+            {imagenDestacada ? renderizarImagenDestacada() : children}
           </div>
           
           {/* Barra inferior */}

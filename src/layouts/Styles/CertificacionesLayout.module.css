@@ -1,6 +1,8 @@
-/* CertificacionesLayout.module.css - Versión con breakpoints de WordPress */
-
-.contenedorLayout {
+/*************************************************
+ * Contenedor principal
+ * Layout de pantalla completa para la aplicación
+ *************************************************/
+ .contenedorLayout {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -11,6 +13,7 @@
 
 /*************************************************
  * Encabezado superior
+ * Contiene el botón de volver y el logo central
  *************************************************/
 .cabecera {
   height: 120px;
@@ -45,6 +48,7 @@
 
 /*************************************************
  * Contenido Principal
+ * Estructura de dos columnas (barra lateral + contenido)
  *************************************************/
 .contenedorContenido {
   flex: 1;
@@ -54,6 +58,7 @@
 
 /*************************************************
  * Barra Lateral
+ * Navegación vertical con elementos seleccionables
  *************************************************/
 .barraLateral {
   width: 200px;
@@ -105,6 +110,7 @@
 
 /*************************************************
  * Contenedor Principal
+ * Área principal de contenido (video + barra info)
  *************************************************/
 .contenidoPrincipal {
   flex: 1;
@@ -115,6 +121,7 @@
 
 /*************************************************
  * Sección de Video e Imagen
+ * Área donde se muestra el video o imagen destacada
  *************************************************/
 .seccionVideo {
   width: 100%;
@@ -131,7 +138,10 @@
   object-fit: cover;
 }
 
-/* Contenedor de la imagen destacada */
+/*************************************************
+ * Componentes de Imagen Destacada y Botón Play
+ * Controla la imagen destacada y el botón de reproducción
+ *************************************************/
 .imgDestacadaContainer {
   position: relative;
   width: 100%;
@@ -151,7 +161,7 @@
   transform: none;
 }
 
-/* Wrapper para el botón de play */
+/* Wrapper para el botón de play - centrado perfecto */
 .playButtonWrapper {
   position: absolute;
   top: 0;
@@ -174,14 +184,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-left: 4px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* Color del icono SVG */
+/* Color del icono SVG - CORREGIDO para que sea completamente sólido */
 .playButton svg {
   color: #333;
+  fill: #333; /* Esta es la propiedad que hace que el ícono esté completamente relleno */
 }
 
 /* Pequeño efecto hover que no cambia el tamaño pero hace el botón ligeramente más opaco */
@@ -192,6 +202,7 @@
 
 /*************************************************
  * Barra de Información inferior
+ * Contiene título, descripción y otra información
  *************************************************/
 .barraInfo {
   width: 100%;
@@ -203,6 +214,7 @@
 
 /*************************************************
  * Sección de Título (izquierda)
+ * Contiene el título principal y su descripción
  *************************************************/
 .seccionTituloInfo {
   width: 30%;
@@ -213,6 +225,7 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+  padding: 0 50px;
   height: 100%;
   overflow: hidden; /* Evita desbordamiento */
 }
@@ -222,7 +235,6 @@
   font-family: 'Caecilia LT Std', sans-serif;
   font-size: 60px;
   margin: 0;
-  text-align: right;
   word-break: break-word; /* Permite que palabras largas se rompan */
 }
 
@@ -262,6 +274,7 @@
 
 /*************************************************
  * Sección de Descripción (derecha)
+ * Contiene el texto descriptivo del elemento
  *************************************************/
 .seccionDescripcionInfo {
   width: 70%;
@@ -282,7 +295,10 @@
   color: #B3B0AE;
 }
 
-/* Animación para la aparición/desaparición del icono de play/pause */
+/*************************************************
+ * Animaciones
+ * Efectos visuales para elementos interactivos
+ *************************************************/
 @keyframes fadeInOut {
   0% {
     opacity: 0;

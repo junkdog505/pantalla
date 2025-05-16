@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiPlay } from 'react-icons/fi'; // Importamos el icono de play
 import CertificacionesLayout from '../../layouts/CertificacionesLayout';
 import { datosCertificaciones } from '../../lang/certificacionesData';
 import styles from './Styles/Certificaciones.module.css';
@@ -35,27 +34,6 @@ function Certificaciones() {
     }
   };
 
-  // Renderizar la imagen destacada con botón de play centrado
-  const renderizarImagen = () => {
-    if (!datosItemActivo || !datosItemActivo.imgDestacadaVideo) return null;
-
-    return (
-      <div className={styles.imgDestacadaContainer} onClick={handleImageClick}>
-        <img 
-          src={datosItemActivo.imgDestacadaVideo.ruta} 
-          alt={datosItemActivo.titulo[idioma]} 
-          className={styles.imgDestacada}
-        />
-        {/* Botón de play central */}
-        <div className={styles.playButtonWrapper}>
-          <div className={styles.playButton}>
-            <FiPlay size={32} />
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <CertificacionesLayout
       elementosLateral={elementosLateral}
@@ -65,8 +43,12 @@ function Certificaciones() {
       descripcion={datosItemActivo?.descripcion[idioma]}
       idioma={idioma}
       logo={datosItemActivo?.logo?.ruta || '/public/kuna_logo.png'}
+      // Nuevos props para la imagen y el comportamiento
+      imagenDestacada={datosItemActivo?.imgDestacadaVideo?.ruta}
+      onImageClick={handleImageClick}
+      showPlayButton={true}
     >
-      {renderizarImagen()}
+      {/* Ya no necesitamos el renderizarImagen aquí, se maneja en el layout */}
     </CertificacionesLayout>
   );
 }
