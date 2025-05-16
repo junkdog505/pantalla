@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FiPlay } from 'react-icons/fi'; // Importamos el icono de play
 import CertificacionesLayout from '../../layouts/CertificacionesLayout';
-import ReactPlayer from 'react-player';
 import { datosCertificaciones } from '../../lang/certificacionesData';
 import styles from './Styles/Certificaciones.module.css';
 
@@ -15,8 +14,6 @@ function Certificaciones() {
   const navigate = useNavigate();
   const idioma = localStorage.getItem('idioma') || 'es';
   const [itemActivo, setItemActivo] = useState(1);
-  const [reproduciendo, setReproduciendo] = useState(false); // Inicialmente no reproduciendo
-  const [mostrarIconoReproduccion, setMostrarIconoReproduccion] = useState(false);
 
   // Elementos de la barra lateral
   const elementosLateral = datosCertificaciones.map(item => ({
@@ -24,81 +21,37 @@ function Certificaciones() {
     titulo: item.titulo,
     onClick: (id) => {
       setItemActivo(id);
-      setReproduciendo(false); // Al cambiar de item, volver a mostrar la imagen destacada
     }
   }));
 
   // Obtener datos del elemento activo
   const datosItemActivo = datosCertificaciones.find(item => item.id === itemActivo);
 
-  // Manejar reproducción de video
-  const alternarReproduccion = () => {
-    // Si estamos en la imagen destacada, comenzar a reproducir
-    if (!reproduciendo) {
-      setReproduciendo(true);
-    } else {
-      // Si estamos reproduciendo, pausar y mostrar icono
-      setReproduciendo(false);
-      setMostrarIconoReproduccion(true);
-      setTimeout(() => setMostrarIconoReproduccion(false), 800);
+  // Manejar clic en la imagen principal para ir a ver el video
+  const handleImageClick = () => {
+    if (datosItemActivo && datosItemActivo.video) {
+      const videoSlug = datosItemActivo.titulo[idioma].toLowerCase().replace(/\s+/g, '-');
+      navigate(`/certificaciones/video/${videoSlug}`);
     }
   };
 
-  // Renderizar el contenido multimedia
-  const renderizarVideo = () => {
-    if (!datosItemActivo || (!datosItemActivo.video && !datosItemActivo.imgDestacadaVideo)) return null;
+  // Renderizar la imagen destacada con botón de play centrado
+  const renderizarImagen = () => {
+    if (!datosItemActivo || !datosItemActivo.imgDestacadaVideo) return null;
 
-    // Si estamos mostrando la imagen destacada (no reproduciendo video)
-    if (!reproduciendo && datosItemActivo.imgDestacadaVideo) {
-      return (
-        <div 
-          className={styles.imgDestacadaContainer}
-          onClick={alternarReproduccion}
-        >
-          <img 
-            src={datosItemActivo.imgDestacadaVideo.ruta} 
-            alt={datosItemActivo.titulo[idioma]} 
-            className={styles.imgDestacada}
-          />
-          <div className={styles.playButtonOverlay}>
-            <div className={styles.playButton}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="32" height="32">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
+    return (
+      <div className={styles.imgDestacadaContainer} onClick={handleImageClick}>
+        <img 
+          src={datosItemActivo.imgDestacadaVideo.ruta} 
+          alt={datosItemActivo.titulo[idioma]} 
+          className={styles.imgDestacada}
+        />
+        {/* Botón de play central */}
+        <div className={styles.playButtonWrapper}>
+          <div className={styles.playButton}>
+            <FiPlay size={32} />
           </div>
         </div>
-      );
-    }
-
-    // Si estamos reproduciendo el video
-    return (
-      <div 
-        className={styles.videoWrapper}
-        onClick={alternarReproduccion}
-      >
-        <ReactPlayer
-          url={datosItemActivo.video.ruta}
-          playing={reproduciendo}
-          controls={true}
-          width="100%"
-          height="100%"
-          playsinline={true}
-          config={{
-            file: {
-              attributes: {
-                controlsList: 'nodownload nofullscreen'
-              }
-            }
-          }}
-        />
-        
-        {/* Icono de play/pause */}
-        {mostrarIconoReproduccion && (
-          <div className={styles.playPauseIcon}>
-            {reproduciendo ? '⏸' : '▶'}
-          </div>
-        )}
       </div>
     );
   };
@@ -113,7 +66,7 @@ function Certificaciones() {
       idioma={idioma}
       logo={datosItemActivo?.logo?.ruta || '/public/kuna_logo.png'}
     >
-      {renderizarVideo()}
+      {renderizarImagen()}
     </CertificacionesLayout>
   );
 }

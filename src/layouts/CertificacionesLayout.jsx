@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ButtonBack from '../components/ButtonBack/ButtonBack';
@@ -83,7 +84,7 @@ function CertificacionesLayout({
 
         {/* Área de contenido principal */}
         <div className={styles.contenidoPrincipal}>
-          {/* Área de video */}
+          {/* Área de video/imagen */}
           <div className={styles.seccionVideo}>
             {children}
           </div>

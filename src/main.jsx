@@ -10,6 +10,7 @@ import Kuna from './pages/Kuna/Kuna.jsx'
 import Colecciones from './pages/Colecciones/Colecciones.jsx'
 import Pacomarca from './pages/Pacomarca/Pacomarca.jsx'
 import Certificaciones from './pages/Certificaciones/Certificaciones.jsx'
+import CertificacionVideo from './pages/Certificaciones/CertificacionVideo.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/colecciones" element={<Colecciones />} />
         <Route path="/pacomarca" element={<Pacomarca />} />
         <Route path="/certificaciones" element={<Certificaciones />} />
+        <Route path="/certificaciones/video/:videoSlug" element={<CertificacionVideo />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
