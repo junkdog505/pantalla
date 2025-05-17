@@ -1,0 +1,80 @@
+.contenedorSlider {
+  width: 100%;
+  padding: 20px 0;
+  position: relative;
+}
+
+.contenedorSwiper {
+  width: 100%;
+}
+
+.swiper {
+  width: 100%;
+  padding-bottom: 60px; /* Espacio para los botones de navegación */
+}
+
+.slideSwiper {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tarjetaColeccion {
+  width: 100%;
+  aspect-ratio: 3/4; /* Mantiene una relación de aspecto consistente */
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative; /* Añadido para posicionar el contenido */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Ya no necesitamos la clase .imagenColeccion porque usaremos background-image */
+
+.infoColeccion {
+  position: absolute; /* Cambiado para que esté posicionado sobre el fondo */
+  bottom: 0; /* Pegado a la parte inferior */
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tituloColeccion {
+  font-family: 'Caecilia LT Std', sans-serif;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.botonVerVideo {
+  border: none;
+  border-radius: 4px;
+  padding: 6px 15px;
+  font-size: 14px;
+  font-family: 'Caecilia LT Std', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Estilos para los botones de navegación en el centro inferior */
+.botonesNavegacion {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  margin-bottom: -40px;
+  gap: 40px;
+  z-index: 10;
+}

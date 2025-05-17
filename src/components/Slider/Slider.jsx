@@ -2,60 +2,78 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { coleccionesData } from '../../lang/coleccionesData';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import styles from './Styles/Slider.module.css';
-
-// Import Swiper styles
+// Importar estilos de Swiper
 import 'swiper/css';
-import 'swiper/css/effect-coverflow';
+import 'swiper/css/navigation';
 
-/*************************************************
+/************************************************
  * Componente Slider
- * Muestra exactamente 5 colecciones fijas en un formato horizontal
- * con la del centro más grande usando Swiper
- *************************************************/
+ * Muestra carrusel con 5 colecciones en pantalla
+ * que permite navegación infinita
+ ************************************************/
 function Slider({ idioma = 'es' }) {
-  const navigate = useNavigate();
-
-  // Manejar clic en ver video
-  const handleVerVideo = (coleccion) => {
+  const navegar = useNavigate();
+ 
+  /************************************************
+   * Maneja el clic en el botón "Ver video"
+   * Navega a la ruta del video correspondiente
+   ************************************************/
+  const manejarVerVideo = (coleccion) => {
     if (coleccion.video) {
-      navigate(coleccion.video);
+      navegar(coleccion.video);
     }
   };
-
+ 
   return (
-    <div className="slider-container" style={{ padding: '20px 0' }}>
-      <Swiper
-        modules={[EffectCoverflow]}
-        slidesPerView={5}
-        spaceBetween={10}
-        centeredSlides={true}
-        loop={false}
-      >
-        {coleccionesData.map((coleccion) => (
-          <SwiperSlide key={coleccion.id}>
-            <div className={styles.coleccionCard}>
-              <div className={styles.coleccionImageContainer}>
-                <img
-                  src={coleccion.imagen}
-                  alt={coleccion.titulo[idioma]}
-                  className={styles.coleccionImage}
-                />
+    <div className={styles.contenedorSlider}>
+      <div className={styles.contenedorSwiper}>
+        <Swiper
+          modules={[Navigation]}
+          slidesPerView={5}
+          spaceBetween={20}
+          loop={true}
+          navigation={{
+            nextEl: '.boton-siguiente',
+            prevEl: '.boton-anterior',
+          }}
+          className={styles.swiper}
+        >
+          {coleccionesData.map((coleccion) => (
+            <SwiperSlide key={coleccion.id} className={styles.slideSwiper}>
+              <div
+                className={styles.tarjetaColeccion}
+                style={{ backgroundImage: `url(${coleccion.imagen})` }}
+              >
+                <div className={styles.infoColeccion}>
+                  <h3 className={styles.tituloColeccion}>{coleccion.titulo[idioma]}</h3>
+                  <button
+                    className={styles.botonVerVideo}
+                    onClick={() => manejarVerVideo(coleccion)}
+                  >
+                    {idioma === 'es' ? 'Ver video' : 'Watch video'}
+                  </button>
+                </div>
               </div>
-              <div className={styles.coleccionInfo}>
-                <h3 className={styles.coleccionTitle}>{coleccion.titulo[idioma]}</h3>
-                <button
-                  className={styles.verVideoBtn}
-                  onClick={() => handleVerVideo(coleccion)}
-                >
-                  Ver video
-                </button>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+      
+      {/************************************************
+       * Botones de navegación personalizados
+       * Ubicados en el centro inferior del slider
+       ************************************************/}
+      <div className={styles.botonesNavegacion}>
+        <button className={`${styles.botonNav} ${styles.botonAnterior} boton-anterior`}>
+          <FiChevronLeft />
+        </button>
+        <button className={`${styles.botonNav} ${styles.botonSiguiente} boton-siguiente`}>
+          <FiChevronRight />
+        </button>
+      </div>
     </div>
   );
 }

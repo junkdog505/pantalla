@@ -50,7 +50,7 @@ export const coleccionesData = [
             es: 'FALL WINTER',
             en: 'FALL WINTER'
         },
-        imagen: '/fall_winter_slider.png',
+        imagen: '/fall_winter_2_slider.png',
         video: '/videos/fall-winter'
     },
 ];

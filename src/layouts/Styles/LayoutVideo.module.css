@@ -55,21 +55,3 @@
   align-items: center;
   justify-content: center;
 }
-
-/*************************************************
- * Responsive para dispositivos móviles
- *************************************************/
-@media (max-width: 768px) {
-  .buttonWrapper {
-    top: 1rem;
-    left: 1rem;
-  }
-
-  .buttonMinimal {
-    top: 0.5rem;
-    right: 0.5rem;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-  }
-}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import ButtonBack from '../components/ButtonBack/ButtonBack'; // Importamos el componente ButtonBack
 import styles from './Styles/LayoutColecciones.module.css';
 
 /*************************************************
@@ -8,7 +8,7 @@ import styles from './Styles/LayoutColecciones.module.css';
  * Layout para la página de Colecciones
  * con logo central, botón de regreso y slider
  *************************************************/
-function LayoutColecciones({ 
+function LayoutColecciones({
   children,
   idioma = 'es',
   logo = '/kuna_logo.png'
@@ -23,12 +23,17 @@ function LayoutColecciones({
     <div className={styles.contenedorLayout}>
       {/* Encabezado superior */}
       <header className={styles.cabecera}>
-        <button 
-          className={styles.menuButton}
-          onClick={volverAtras}
-        >
-          <FiArrowLeft /> Menú
-        </button>
+        <div className={styles.menuButtonContainer}>
+          {/* Reemplazamos el botón anterior por el componente ButtonBack */}
+          <ButtonBack 
+            text={idioma === 'es' ? 'Menú' : 'Menu'}
+            onClick={volverAtras}
+            style="dark" // Puedes usar 'light' o 'dark' según el diseño
+            icon="arrow"
+            language={idioma}
+            defaultText="menu"
+          />
+        </div>
         
         <div className={styles.contenedorLogo}>
           <img src={logo} alt="KUNA" className={styles.logo} />

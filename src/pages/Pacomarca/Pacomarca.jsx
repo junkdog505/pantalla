@@ -1,35 +1,45 @@
 import React from 'react';
-import LayoutBasico from '../../layouts/LayoutBasico';
-// import styles from './Styles/Pacomarca.module.css';
+import { useNavigate } from 'react-router-dom';
+import LayoutPacomarca from '../../layouts/LayoutPacomarca';
+import styles from './Styles/Pacomarca.module.css';
 
-/*************************************************
- * Componente Pacomarca
- * Muestra información sobre la marca Pacomarca
- *************************************************/
 function Pacomarca() {
+  const navigate = useNavigate();
   const language = localStorage.getItem('idioma') || 'es';
+  
+  const handleBackClick = () => {
+    navigate('/categorias');
+  };
+
+  const getDescription = () => {
+    return language === 'es' 
+      ? 'Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.'
+      : 'Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.';
+  };
 
   return (
-    <LayoutBasico 
-      buttonText={language === 'es' ? 'Volver' : 'Back'}
+    <LayoutPacomarca
+      logo="/pacomarca_logo.png"
+      description={getDescription()}
+      backgroundImage="/pacomarca_img.png"
+      onBackClick={handleBackClick}
+      backButtonStyle="light"
+      language={language}
     >
-      <div className={styles.container}>
-        <h1 className={styles.titulo}>PACOMARCA</h1>
-        <div className={styles.content}>
-          <p className={styles.descripcion}>
+      <div className={styles.pacomarcaContainer}>
+        <div className={styles.contentSection}>
+          <h2 className={styles.sectionTitle}>
+            {language === 'es' ? 'SUSTENTABLE ALPACA NETWORK' : 'SUSTAINABLE ALPACA NETWORK'}
+          </h2>
+          <p className={styles.sectionText}>
             {language === 'es' 
-              ? 'Pacomarca es nuestra marca premium de productos de alpaca, reconocida internacionalmente por su calidad excepcional y diseño innovador.' 
-              : 'Pacomarca is our premium alpaca brand, internationally recognized for its exceptional quality and innovative design.'}
+              ? 'Pacomarca es nuestra red de alpaca sustentable, que representa nuestro compromiso con la calidad, el bienestar animal y las comunidades locales.'
+              : 'Pacomarca is our sustainable alpaca network, representing our commitment to quality, animal welfare, and local communities.'}
           </p>
-          {/* Aquí puedes agregar:
-              - Historia de la marca
-              - Productos destacados
-              - Galería de imágenes
-              - etc.
-          */}
+          {/* Aquí puedes añadir más contenido específico de Pacomarca */}
         </div>
       </div>
-    </LayoutBasico>
+    </LayoutPacomarca>
   );
 }
 

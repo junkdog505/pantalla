@@ -17,20 +17,7 @@
 /*************************************************
  * Círculo del ícono
  *************************************************/
-.iconCircle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #CBC9B1;
-  transition: all 0.3s ease;
-}
 
-.iconCircle svg {
-  font-size: 20px;
-}
 
 /*************************************************
  * Texto del botón

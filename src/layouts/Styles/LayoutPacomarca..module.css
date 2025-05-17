@@ -1,0 +1,59 @@
+.contenedorLayout {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/*************************************************
+   * Encabezado superior
+   *************************************************/
+.cabecera {
+  height: 120px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.botonVolver {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  /* Asegurar que esté por encima */
+}
+
+.contenedorLogo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  height: 28px;
+  object-fit: contain;
+}
+
+/*************************************************
+   * Contenido Principal
+   *************************************************/
+.contenedorContenido {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.contenidoPrincipal {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
