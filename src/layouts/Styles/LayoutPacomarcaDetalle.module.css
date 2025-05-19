@@ -1,16 +1,11 @@
-/*************************************************
- * Estilos para LayoutPacomarcaDetalle
- * Layout para mostrar detalles de un punto de interés
- * replicando exactamente el diseño de la imagen de referencia
- *************************************************/
-
- .layoutContainer {
+.layoutContainer {
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: #FFFFFF;
   overflow: hidden;
+  font-family: 'Caecilia LT Std', sans-serif;
 }
 
 /* Header con logo y botón volver */
@@ -51,14 +46,12 @@
 
 /* Columna izquierda - Título y contenido (cuadro rojo) */
 .leftColumn {
-  width: 50%;
+  width: 30%;
   height: 100%;
-  padding: 40px;
+  padding: 40px 20px 40px 40px; /* Mayor padding a la izquierda */
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  /* Borde visible solo para depuración - quitar en producción */
-  /* border: 1px solid red; */
 }
 
 .titulo {
@@ -86,21 +79,20 @@
 
 /* Columna derecha - Video y galería (cuadro amarillo-azul) */
 .rightColumn {
-  width: 50%;
+  width: 70%;
   display: flex;
   flex-direction: column;
-  padding: 0;
-  /* Borde visible solo para depuración - quitar en producción */
-  /* border: 1px solid orange; */
+  padding: 40px 40px 0 0; /* Padding superior y derecho solamente */
+  height: 100%;
+  overflow: hidden;
 }
 
 /* Contenedor del video (cuadro amarillo) */
 .videoContainer {
-  flex: 0 0 50%;
+  flex: 0 0 calc(50% - 10px); /* Restamos la mitad del espacio de 20px */
   width: 100%;
   position: relative;
-  /* Borde visible solo para depuración - quitar en producción */
-  /* border: 2px solid yellow; */
+  margin-bottom: 20px; /* Espacio de 20px entre video y slider */
 }
 
 .videoWrapper {
@@ -109,12 +101,16 @@
   position: relative;
   cursor: pointer;
   overflow: hidden;
+  background-color: #000; /* Fondo negro para videos/imágenes */
 }
 
 .videoThumbnail {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .playButtonWrapper {
@@ -126,30 +122,47 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 5;
 }
 
 .playButton {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #333;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* Galería (cuadro azul) */
+/* Efecto hover para el botón de play */
+.videoWrapper:hover .playButton {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* NUEVA ESTRUCTURA: Contenedor maestro para galería y botones */
 .galeriaContainer {
-  flex: 0 0 50%;
+  flex: 0 0 calc(50% - 10px); /* Altura del contenedor del slider */
   width: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenedor solo para el slider - 90% del espacio */
+.sliderContainer {
+  width: 100%;
+  height: 90%; /* 90% del espacio para las imágenes */
+  position: relative;
+  overflow: hidden;
 }
 
 .swiper {
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 
 .slideSwiper {
@@ -160,35 +173,48 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
+  border-radius: 4px; /* Agregar un ligero radio a las imágenes */
 }
 
 .tarjetaImagen img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-/* Botones de navegación */
+/* Efecto hover en las imágenes de la galería */
+.tarjetaImagen:hover img {
+  transform: scale(1.05);
+}
+
+/* Contenedor de navegación - 10% del espacio */
 .botonesNavegacion {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  height: 10%; /* 10% del espacio para los botones */
+  width: 100%;
   display: flex;
-  gap: 20px;
-  z-index: 10;
+  align-items: center;
+  padding-left: 20px; /* Alineación izquierda */
+  gap: 10px;
 }
 
+/* Estilo de los botones */
 .botonNav {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #FFFFFF; /* Color sólido para mejor visibilidad */
   color: #333;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+  border: 1px solid #E0E0E0; /* Borde sutil */
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.botonNav:hover {
+  background-color: #F5F5F5;
+  transform: scale(1.1);
 }

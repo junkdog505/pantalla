@@ -41,7 +41,12 @@ function PacomarcaDetalle() {
   // Manejar clic en reproducir video
   const handlePlayVideo = () => {
     if (punto && punto.datos.video) {
-      navigate(`/videos${punto.datos.video}`);
+      // Asegurarnos de que la ruta del video sea correcta
+      const videoPath = punto.datos.video.startsWith('/') 
+        ? punto.datos.video 
+        : `/${punto.datos.video}`;
+      
+      navigate(videoPath);
     }
   };
 
@@ -55,11 +60,11 @@ function PacomarcaDetalle() {
     );
   }
 
-  // Render del detalle del punto usando el layout actualizado
   return (
     <LayoutPacomarcaDetalle
       titulo={punto.titulo}
       descripcion={punto.datos.descripcion}
+      videoImagenDestacada={punto.datos.video_imagen_destacada}
       videoSrc={punto.datos.video}
       galeria={punto.datos.galeria}
       contenido={punto.datos.contenido}

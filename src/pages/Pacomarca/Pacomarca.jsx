@@ -5,6 +5,11 @@ import BotonesUbicables from '../../components/BotonesUbicables/BotonesUbicables
 import { pacomarcaData } from '../../lang/pacomarcaData';
 import styles from './Styles/Pacomarca.module.css';
 
+/*************************************************
+ * Componente Pacomarca
+ * Muestra el mapa interactivo de Pacomarca con puntos
+ * seleccionables que redirigen a cada detalle
+ *************************************************/
 function Pacomarca() {
   const navigate = useNavigate();
   const language = localStorage.getItem('idioma') || 'es';

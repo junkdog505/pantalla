@@ -11,12 +11,13 @@ import 'swiper/css/navigation';
 /*************************************************
  * Componente LayoutPacomarcaDetalle
  * Layout para mostrar detalles de un punto de interés
- * siguiendo exactamente el diseño mostrado en la imagen de referencia
+ * Con estructura mejorada para la visualización de botones
  *************************************************/
 function LayoutPacomarcaDetalle({
   titulo,
   descripcion,
   videoSrc,
+  videoImagenDestacada,
   galeria = [],
   contenido = [],
   onBackClick,
@@ -47,7 +48,7 @@ function LayoutPacomarcaDetalle({
       
       {/* Contenido principal dividido exactamente como en la imagen */}
       <div className={styles.mainContent}>
-        {/* Columna izquierda - Título y contenido (cuadro rojo) */}
+        {/* Columna izquierda - Título y contenido */}
         <div className={styles.leftColumn}>
           <h1 className={styles.titulo}>{titulo}</h1>
           
@@ -62,54 +63,66 @@ function LayoutPacomarcaDetalle({
           </div>
         </div>
         
-        {/* Columna derecha - dividida en dos partes (cuadro amarillo y azul) */}
+        {/* Columna derecha - dividida en dos partes */}
         <div className={styles.rightColumn}>
-          {/* Área de video (cuadro amarillo) */}
+          {/* Área de video con imagen destacada */}
           <div className={styles.videoContainer}>
-            {videoSrc && (
+            {(videoSrc || videoImagenDestacada) && (
               <div 
                 className={styles.videoWrapper}
                 onClick={onPlayClick}
               >
+                {/* Mostrar la imagen destacada como fondo */}
+                {videoImagenDestacada && (
+                  <img 
+                    src={videoImagenDestacada} 
+                    alt={titulo} 
+                    className={styles.videoThumbnail}
+                  />
+                )}
+                
                 <div className={styles.playButtonWrapper}>
                   <div className={styles.playButton}>
-                    <FiPlay size={40} />
+                    <FiPlay size={30} />
                   </div>
                 </div>
               </div>
             )}
           </div>
           
-          {/* Galería de imágenes (cuadro azul) */}
+          {/* NUEVA ESTRUCTURA: Galería con contenedor separado para slider y botones */}
           {galeria && galeria.length > 0 && (
             <div className={styles.galeriaContainer}>
-              <Swiper
-                modules={[Navigation]}
-                slidesPerView={3}
-                spaceBetween={20}
-                loop={true}
-                navigation={{
-                  nextEl: '.boton-siguiente',
-                  prevEl: '.boton-anterior',
-                }}
-                className={styles.swiper}
-              >
-                {galeria.map((imagen, index) => (
-                  <SwiperSlide key={index} className={styles.slideSwiper}>
-                    <div className={styles.tarjetaImagen}>
-                      <img src={imagen} alt={`${titulo} ${index + 1}`} />
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+              {/* Contenedor exclusivo para el slider (90%) */}
+              <div className={styles.sliderContainer}>
+                <Swiper
+                  modules={[Navigation]}
+                  slidesPerView={3}
+                  spaceBetween={15}
+                  loop={true}
+                  navigation={{
+                    nextEl: '.boton-siguiente',
+                    prevEl: '.boton-anterior',
+                  }}
+                  className={styles.swiper}
+                >
+                  {galeria.map((imagen, index) => (
+                    <SwiperSlide key={index} className={styles.slideSwiper}>
+                      <div className={styles.tarjetaImagen}>
+                        <img src={imagen} alt={`${titulo} ${index + 1}`} />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
               
-              {/* Botones de navegación */}
+              {/* Contenedor exclusivo para los botones (10%) */}
               <div className={styles.botonesNavegacion}>
-                <button className={`${styles.botonNav} ${styles.botonAnterior} boton-anterior`}>
-                  <FiChevronLeft />
+                <button className={`${styles.botonNav} ${styles.botonAnterior} boton-anterior`} aria-label="Anterior">
+                  <FiChevronLeft size={20} />
                 </button>
-                <button className={`${styles.botonNav} ${styles.botonSiguiente} boton-siguiente`}>
-                  <FiChevronRight />
+                <button className={`${styles.botonNav} ${styles.botonSiguiente} boton-siguiente`} aria-label="Siguiente">
+                  <FiChevronRight size={20} />
                 </button>
               </div>
             </div>
@@ -120,4 +133,4 @@ function LayoutPacomarcaDetalle({
   );
 }
 
-export default LayoutPacomarcaDetalle;
+export default LayoutPacomarcaDetalle

@@ -24,6 +24,9 @@ export const pacomarcaData = {
           galeria: [
             '/home_relax_slider.png',
             '/expressions_slider.png',
+            '/milenium_slider.png',
+            '/milenium_slider.png',
+            '/milenium_slider.png',
             '/milenium_slider.png'
           ],
           contenido: [
