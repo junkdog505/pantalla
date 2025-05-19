@@ -44,11 +44,11 @@
   overflow: hidden;
 }
 
-/* Columna izquierda - Título y contenido (cuadro rojo) */
+/* Columna izquierda - Título y contenido */
 .leftColumn {
   width: 30%;
   height: 100%;
-  padding: 40px 20px 40px 40px; /* Mayor padding a la izquierda */
+  padding: 40px 20px 40px 40px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -77,22 +77,20 @@
   margin-bottom: 16px;
 }
 
-/* Columna derecha - Video y galería (cuadro amarillo-azul) */
+/* Columna derecha - Video y galería */
 .rightColumn {
   width: 70%;
   display: flex;
   flex-direction: column;
-  padding: 40px 40px 0 0; /* Padding superior y derecho solamente */
   height: 100%;
   overflow: hidden;
 }
 
-/* Contenedor del video (cuadro amarillo) */
+/* Contenedor del video */
 .videoContainer {
-  flex: 0 0 calc(50% - 10px); /* Restamos la mitad del espacio de 20px */
+  flex: 0 0 calc(50% - 10px);
   width: 100%;
   position: relative;
-  margin-bottom: 20px; /* Espacio de 20px entre video y slider */
 }
 
 .videoWrapper {
@@ -101,7 +99,7 @@
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  background-color: #000; /* Fondo negro para videos/imágenes */
+  background-color: #000;
 }
 
 .videoThumbnail {
@@ -137,25 +135,22 @@
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* Efecto hover para el botón de play */
-.videoWrapper:hover .playButton {
-  transform: scale(1.1);
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
-/* NUEVA ESTRUCTURA: Contenedor maestro para galería y botones */
+/* Galería - Contenedor principal */
 .galeriaContainer {
-  flex: 0 0 calc(50% - 10px); /* Altura del contenedor del slider */
+  flex: 0 0 calc(50% - 10px);
   width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
+  height: calc(50% - 10px);
+  position: relative;
 }
 
-/* Contenedor solo para el slider - 90% del espacio */
+/* Contenedor del slider */
 .sliderContainer {
   width: 100%;
-  height: 90%; /* 90% del espacio para las imágenes */
+  height: calc(100% - 60px);
   position: relative;
   overflow: hidden;
 }
@@ -167,54 +162,44 @@
 
 .slideSwiper {
   height: 100%;
+  width: auto;
 }
 
 .tarjetaImagen {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  border-radius: 4px; /* Agregar un ligero radio a las imágenes */
+  border-radius: 4px;
 }
 
 .tarjetaImagen img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
-/* Efecto hover en las imágenes de la galería */
-.tarjetaImagen:hover img {
-  transform: scale(1.05);
-}
-
-/* Contenedor de navegación - 10% del espacio */
+/* Contenedor para los botones de navegación */
 .botonesNavegacion {
-  height: 10%; /* 10% del espacio para los botones */
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
+  height: 70px;
   display: flex;
   align-items: center;
-  padding-left: 20px; /* Alineación izquierda */
-  gap: 10px;
+  padding-left: 20px;
+  gap: 20px;
 }
 
 /* Estilo de los botones */
 .botonNav {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background-color: #FFFFFF; /* Color sólido para mejor visibilidad */
-  color: #333;
+  background-color: white;
+  border: 1px solid #CBC9B1;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #E0E0E0; /* Borde sutil */
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.botonNav:hover {
-  background-color: #F5F5F5;
-  transform: scale(1.1);
 }

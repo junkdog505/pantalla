@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { FiChevronLeft, FiChevronRight, FiPlay } from 'react-icons/fi';
@@ -11,7 +12,7 @@ import 'swiper/css/navigation';
 /*************************************************
  * Componente LayoutPacomarcaDetalle
  * Layout para mostrar detalles de un punto de interés
- * Con estructura mejorada para la visualización de botones
+ * Con navegación a video en ruta específica
  *************************************************/
 function LayoutPacomarcaDetalle({
   titulo,
@@ -21,9 +22,39 @@ function LayoutPacomarcaDetalle({
   galeria = [],
   contenido = [],
   onBackClick,
-  onPlayClick,
   language = 'es'
 }) {
+  const navigate = useNavigate();
+  const { slug } = useParams();
+  
+  // Referencias para controlar el swiper
+  const swiperRef = useRef(null);
+  const [swiper, setSwiper] = useState(null);
+  
+  // Configurar la instancia de swiper cuando está lista
+  const handleSwiperInit = (swiperInstance) => {
+    setSwiper(swiperInstance);
+  };
+  
+  // Manejadores de navegación manual
+  const handlePrevClick = () => {
+    if (swiper) {
+      swiper.slidePrev();
+    }
+  };
+  
+  const handleNextClick = () => {
+    if (swiper) {
+      swiper.slideNext();
+    }
+  };
+  
+  // Manejador para ir a la página de video
+  const handlePlayClick = () => {
+    // Navegar a la ruta de video específica
+    navigate(`/pacomarca/${slug}/video`);
+  };
+
   return (
     <div className={styles.layoutContainer}>
       {/* Header con logo y botón volver */}
@@ -46,7 +77,7 @@ function LayoutPacomarcaDetalle({
         </div>
       </header>
       
-      {/* Contenido principal dividido exactamente como en la imagen */}
+      {/* Contenido principal */}
       <div className={styles.mainContent}>
         {/* Columna izquierda - Título y contenido */}
         <div className={styles.leftColumn}>
@@ -70,7 +101,7 @@ function LayoutPacomarcaDetalle({
             {(videoSrc || videoImagenDestacada) && (
               <div 
                 className={styles.videoWrapper}
-                onClick={onPlayClick}
+                onClick={handlePlayClick} // Usar nuestro nuevo manejador
               >
                 {/* Mostrar la imagen destacada como fondo */}
                 {videoImagenDestacada && (
@@ -90,39 +121,44 @@ function LayoutPacomarcaDetalle({
             )}
           </div>
           
-          {/* NUEVA ESTRUCTURA: Galería con contenedor separado para slider y botones */}
+          {/* Galería con estructura usando clases CSS */}
           {galeria && galeria.length > 0 && (
             <div className={styles.galeriaContainer}>
-              {/* Contenedor exclusivo para el slider (90%) */}
-              <div className={styles.sliderContainer}>
-                <Swiper
-                  modules={[Navigation]}
-                  slidesPerView={3}
-                  spaceBetween={15}
-                  loop={true}
-                  navigation={{
-                    nextEl: '.boton-siguiente',
-                    prevEl: '.boton-anterior',
-                  }}
-                  className={styles.swiper}
-                >
-                  {galeria.map((imagen, index) => (
-                    <SwiperSlide key={index} className={styles.slideSwiper}>
-                      <div className={styles.tarjetaImagen}>
-                        <img src={imagen} alt={`${titulo} ${index + 1}`} />
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
+              {/* Slider básico sin navegación integrada */}
+              <Swiper
+                onSwiper={handleSwiperInit}
+                modules={[Navigation]}
+                slidesPerView={3}
+                spaceBetween={15}
+                loop={true}
+                className={styles.swiper}
+              >
+                {galeria.map((imagen, index) => (
+                  <SwiperSlide key={index} className={styles.slideSwiper}>
+                    <div className={styles.tarjetaImagen}>
+                      <img 
+                        src={imagen} 
+                        alt={`${titulo} ${index + 1}`}
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
               
-              {/* Contenedor exclusivo para los botones (10%) */}
+              {/* BOTONES DE NAVEGACIÓN usando clases CSS */}
               <div className={styles.botonesNavegacion}>
-                <button className={`${styles.botonNav} ${styles.botonAnterior} boton-anterior`} aria-label="Anterior">
-                  <FiChevronLeft size={20} />
+                <button 
+                  onClick={handlePrevClick}
+                  className={styles.botonNav}
+                >
+                  <FiChevronLeft size={22} />
                 </button>
-                <button className={`${styles.botonNav} ${styles.botonSiguiente} boton-siguiente`} aria-label="Siguiente">
-                  <FiChevronRight size={20} />
+                
+                <button 
+                  onClick={handleNextClick}
+                  className={styles.botonNav}
+                >
+                  <FiChevronRight size={22} />
                 </button>
               </div>
             </div>
@@ -133,4 +169,4 @@ function LayoutPacomarcaDetalle({
   );
 }
 
-export default LayoutPacomarcaDetalle
+export default LayoutPacomarcaDetalle;
