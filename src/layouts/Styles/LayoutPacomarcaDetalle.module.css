@@ -1,0 +1,194 @@
+/*************************************************
+ * Estilos para LayoutPacomarcaDetalle
+ * Layout para mostrar detalles de un punto de interés
+ * replicando exactamente el diseño de la imagen de referencia
+ *************************************************/
+
+ .layoutContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+
+/* Header con logo y botón volver */
+.header {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 20px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.backButtonWrapper {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  height: 30px;
+  width: auto;
+}
+
+/* Contenido principal - exactamente dividido como en la imagen */
+.mainContent {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Columna izquierda - Título y contenido (cuadro rojo) */
+.leftColumn {
+  width: 50%;
+  height: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  /* Borde visible solo para depuración - quitar en producción */
+  /* border: 1px solid red; */
+}
+
+.titulo {
+  font-family: 'Caecilia LT Std', sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #333333;
+  margin: 0 0 20px 0;
+}
+
+.contenidoWrapper {
+  flex: 1;
+}
+
+.contenido {
+  color: #666666;
+}
+
+.parrafo {
+  font-family: 'Caecilia LT Std', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* Columna derecha - Video y galería (cuadro amarillo-azul) */
+.rightColumn {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  /* Borde visible solo para depuración - quitar en producción */
+  /* border: 1px solid orange; */
+}
+
+/* Contenedor del video (cuadro amarillo) */
+.videoContainer {
+  flex: 0 0 50%;
+  width: 100%;
+  position: relative;
+  /* Borde visible solo para depuración - quitar en producción */
+  /* border: 2px solid yellow; */
+}
+
+.videoWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.videoThumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.playButtonWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.playButton {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+/* Galería (cuadro azul) */
+.galeriaContainer {
+  flex: 0 0 50%;
+  width: 100%;
+  position: relative;
+}
+
+.swiper {
+  height: 100%;
+  width: 100%;
+}
+
+.slideSwiper {
+  height: 100%;
+}
+
+.tarjetaImagen {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tarjetaImagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Botones de navegación */
+.botonesNavegacion {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 10;
+}
+
+.botonNav {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}

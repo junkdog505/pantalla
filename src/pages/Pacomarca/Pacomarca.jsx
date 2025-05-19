@@ -18,7 +18,8 @@ function Pacomarca() {
   
   // Manejar clic en punto o botón
   const handlePuntoClick = (punto) => {
-    navigate(`/videos${punto.datos.video}`);
+    // Navegar a la página de detalles usando el slug del punto
+    navigate(`/pacomarca/${punto.slug}`);
   };
 
   return (
@@ -26,6 +27,7 @@ function Pacomarca() {
       logo={pagina.logo}
       description={pagina.descripcion}
       backgroundColor="transparent"
+      backgroundImage={pagina.imagen} // Usar la imagen como fondo
       onBackClick={handleBackClick}
       backButtonStyle="light"
       language={language}
@@ -33,7 +35,7 @@ function Pacomarca() {
       <div className={styles.pacomarcaContainer}>
         <BotonesUbicables 
           imagen={pagina.imagen}
-          puntos={paginas}  // Ahora pasamos directamente paginas
+          puntos={paginas}
           onPuntoClick={handlePuntoClick}
         />
       </div>

@@ -1,10 +1,5 @@
-
-/*************************************************
- * Modificaciones necesarias para LayoutPacomarca.module.css
- *************************************************/
- 
- /* Modificación para el contenedor principal */
- .layoutContainer {
+/* Modificación para el contenedor principal */
+.layoutContainer {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -16,7 +11,7 @@
     position: relative;
   }
   
-  /* Modificación para el header - hacerlo transparente */
+  /* Modificación para el header - hacerlo transparente y centrar contenido */
   .header {
     width: 100%;
     display: flex;
@@ -29,6 +24,43 @@
     top: 0;
     left: 0;
     background-color: transparent; /* Asegurar que es transparente */
+  }
+  
+  /* Nuevo contenedor para centrar logo y descripción */
+  .headerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    text-align: center;
+  }
+  
+  /* Contenedor del logo */
+  .logoContainer {
+    margin-bottom: 1rem;
+  }
+  
+  /* Estilos del logo */
+  .logo {
+    max-height: 50px;
+    width: auto;
+  }
+  
+  /* Contenedor de la descripción */
+  .descriptionContainer {
+    width: 100%;
+  }
+  
+  /* Estilos para el texto de descripción */
+  .description {
+    color: #ffffff;
+    font-family: 'Caecilia LT Std', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+    text-align: center;
+    font-weight: 300;
   }
   
   /* Mantener el resto igual */
@@ -48,3 +80,4 @@
     height: 100%;
     z-index: 5; /* Entre el fondo y los controles del header */
   }
+  

@@ -4,8 +4,8 @@ import styles from './Styles/LayoutPacomarca.module.css';
 
 /*************************************************
  * Componente LayoutPacomarca
- * Layout flexible con cabecera transparente y contenido
- * principal con fondo personalizable
+ * Layout flexible con cabecera centrada transparente
+ * y contenido principal con fondo personalizable
  *************************************************/
 function LayoutPacomarca({
   children,
@@ -43,8 +43,7 @@ function LayoutPacomarca({
         
       {/* Header con logo y descripción opcionales */}
       <header className={styles.header}>
-        {/* Área central: Logo y descripción opcionales */}
-        <div className={styles.headerCenter}>
+        <div className={styles.headerContent}>
           {showLogo && (
             <div className={styles.logoContainer}>
               <img src={logo} alt="Logo" className={styles.logo} />

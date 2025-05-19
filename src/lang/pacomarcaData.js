@@ -19,11 +19,12 @@ export const pacomarcaData = {
         },
         datos: {
           descripcion: "El hogar tradicional de los pastores de alpaca, construido con técnicas ancestrales para resistir el clima extremo de los Andes.",
-          video: "/videos/cabana-pastor.mp4",
+          video: "/videos/kuna.mp4",
+          video_imagen_destacada: "/pacomarca_img.png",
           galeria: [
-            "/imagenes/cabana1.jpg",
-            "/imagenes/cabana2.jpg",
-            "/imagenes/cabana3.jpg"
+            '/home_relax_slider.png',
+            '/expressions_slider.png',
+            '/milenium_slider.png'
           ],
           contenido: [
             "La cabaña del pastor es una estructura tradicional construida con piedras de la región y techo de paja. Estas construcciones han sido utilizadas por generaciones de pastores de alpacas en los Andes peruanos.",
